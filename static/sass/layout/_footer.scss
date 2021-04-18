@@ -1,0 +1,19 @@
+footer{
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    @media screen and (max-width: 600px) {
+		height: 35px;
+	}
+}
+footer .banner-center{
+	text-align: center;
+}
+.banner-center img{
+	max-height: 56px;
+	@media screen and (max-width: 600px) {
+		max-height: 35px;
+	}
+    max-width: 100%;
+}

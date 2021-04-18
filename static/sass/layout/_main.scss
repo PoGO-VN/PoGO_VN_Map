@@ -14,9 +14,9 @@ body.dark {
 .map-container {
   position: absolute;
   width: 100%;
-  height: calc(100% - 56px);
+  height: calc(100% - 112px);
 
   @media screen and (max-width: 600px) {
-    height: calc(100% - 48px);
+    height: calc(100% - 83px);
   }
 }

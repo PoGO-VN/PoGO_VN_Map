@@ -1205,6 +1205,7 @@
           </div>
         </div>
       </li>
+      {% if settings.notifications %}
       <li>
         <div class="collapsible-header"><i class="material-icons">notifications</i>{{ i18n('Notifications') }}</div>
         <div class="collapsible-body">
@@ -1475,6 +1476,7 @@
           </div>
         </div>
       </li>
+      {% endif %}
       <li>
         <div class="collapsible-header"><i class="material-icons">palette</i>{{ i18n('Style') }}</div>
         <div class="collapsible-body">
@@ -1536,6 +1538,7 @@
           </div>
         </div>
       </li>
+      {% if settings.backup_restore %}
       <li>
         <div class="collapsible-header"><i class="material-icons">settings_backup_restore</i>{{ i18n('Backup & reset') }}</div>
         <div class="collapsible-body">
@@ -1563,6 +1566,7 @@
           {% endif %}
         </div>
       </li>
+      {% endif %}
     </ul>
 
     <ul id="stats-sidenav" class="sidenav">
@@ -1763,6 +1767,11 @@
     <div class="map-container">
       <div id="map" class="leaflet-map"></div>
     </div>
+    <footer>
+      <div class="banner-center">
+        <a href="https://vinsnail.net/ban-be" target="_blank"><img src="/static/images/banners/vinsnail-friend.jpg" /></a>
+      </div>
+    </footer>
 
     <script>
       const version = "{{ version }}";
