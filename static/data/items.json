@@ -8,7 +8,7 @@
   },
   "2": {
     "name": "Great Ball",
-    "questBundles": [5, 7]
+    "questBundles": [3, 5, 7]
   },
   "3": {
     "name": "Ultra Ball",
@@ -28,6 +28,10 @@
     "name": "Mega Energy",
     "questBundles": [5, 10, 15, 20]
   },
+  "8": {
+    "name": "Candy",
+    "questBundles": [3]
+  },
   "101": {
     "name": "Potion",
     "questBundles": [5]
@@ -38,7 +42,7 @@
   },
   "103": {
     "name": "Hyper Potion",
-    "questBundles": [3]
+    "questBundles": [2, 3]
   },
   "104": {
     "name": "Max Potion",
@@ -46,7 +50,7 @@
   },
   "201": {
     "name": "Revive",
-    "questBundles": [2, 3, 4, 6, 8]
+    "questBundles": [1, 2, 3, 4, 6, 8]
   },
   "202": {
     "name": "Max Revive",
@@ -81,6 +85,9 @@
   },
   "504": {
     "name": "Magnetic Lure Module"
+  },
+  "505": {
+    "name": "Rainy Lure Module"
   },
   "602": {
     "name": "X Attack"
