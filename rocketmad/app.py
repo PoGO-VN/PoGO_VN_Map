@@ -1034,9 +1034,10 @@ def create_app():
             Costume.Name(costume)
             PokemonEvolution.Name(evolution)
             WeatherCondition.Name(weather)
-        except Exception:
+        except Exception as e:
+            print(e)
             abort(400)
-
+            
         if raw:
             filename = image_generator.get_pokemon_raw_icon(
                 pkm, gender=gender, form=form, costume=costume,
