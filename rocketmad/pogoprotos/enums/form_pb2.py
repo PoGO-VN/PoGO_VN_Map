@@ -8693,6 +8693,10 @@ _FORM = _descriptor.EnumDescriptor(
       name='SLOWBRO_2021', index=2165, number=2674,
       serialized_options=None,
       type=None),
+   	_descriptor.EnumValueDescriptor(
+      name='PIKACHU_FLYING_2021', index=2169, number=2678,
+      serialized_options=None,
+      type=None),
   ],
   containing_type=None,
   serialized_options=None,
@@ -10868,6 +10872,7 @@ DELIBIRD_WINTER_2020 = 2671
 CUBCHOO_WINTER_2020 = 2672
 SLOWPOKE_2020 = 2673
 SLOWBRO_2021 = 2674
+PIKACHU_FLYING_2021 = 2670
 
 
 DESCRIPTOR.enum_types_by_name['Form'] = _FORM
