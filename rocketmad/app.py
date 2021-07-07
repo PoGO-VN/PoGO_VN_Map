@@ -32,6 +32,7 @@ from .pogoprotos.enums.weather_condition_pb2 import WeatherCondition
 from .transform import transform_from_wgs_to_gcj
 from .utils import (get_args, get_pokemon_name, get_sessions, i18n,
                     parse_geofence_file)
+from pathlib import Path
 
 log = logging.getLogger(__name__)
 args = get_args()
@@ -1035,9 +1036,9 @@ def create_app():
             PokemonEvolution.Name(evolution)
             WeatherCondition.Name(weather)
         except Exception as e:
-            print(e)
+            return send_file(Path(args.root_path) / 'static/images/dummy_pokemon.png', mimetype='image/png')
             abort(400)
-            
+
         if raw:
             filename = image_generator.get_pokemon_raw_icon(
                 pkm, gender=gender, form=form, costume=costume,
