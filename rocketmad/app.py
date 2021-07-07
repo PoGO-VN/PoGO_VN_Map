@@ -1031,7 +1031,7 @@ def create_app():
             # An exception is thrown when values are invalid.
             PokemonId.Name(pkm)
             Gender.Name(gender)
-            if form != "2678":
+            if form != 2678:
                 Form.Name(form)
             Costume.Name(costume)
             PokemonEvolution.Name(evolution)
