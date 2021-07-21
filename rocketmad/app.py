@@ -22,17 +22,9 @@ from .blacklist import fingerprints
 from .dyn_img import ImageGenerator
 from .models import (db, Pokemon, Gym, Pokestop, Nest, ScannedLocation,
                      TrsSpawn, Weather)
-from .pogoprotos.enums.costume_pb2 import Costume
-from .pogoprotos.enums.form_pb2 import Form
-from .pogoprotos.enums.gender_pb2 import Gender
-from .pogoprotos.enums.pokemon_evolution_pb2 import PokemonEvolution
-from .pogoprotos.enums.pokemon_id_pb2 import PokemonId
-from .pogoprotos.enums.raid_level_pb2 import RaidLevel
-from .pogoprotos.enums.weather_condition_pb2 import WeatherCondition
 from .transform import transform_from_wgs_to_gcj
 from .utils import (get_args, get_pokemon_name, get_sessions, i18n,
                     parse_geofence_file)
-from pathlib import Path
 
 log = logging.getLogger(__name__)
 args = get_args()
@@ -1018,27 +1010,14 @@ def create_app():
 
     @app.route('/pkm_img')
     def pokemon_img():
-        try:
-            raw = 'raw' in request.args
-            pkm = int(request.args.get('pkm'))
-            gender = int(request.args.get('gender', '0'))
-            form = int(request.args.get('form', '0'))
-            costume = int(request.args.get('costume', '0'))
-            evolution = int(request.args.get('evolution', '0'))
-            shiny = 'shiny' in request.args
-            weather = int(request.args.get('weather', '0'))
-
-            # An exception is thrown when values are invalid.
-            PokemonId.Name(pkm)
-            Gender.Name(gender)
-            if form != 2678:
-                Form.Name(form)
-            Costume.Name(costume)
-            PokemonEvolution.Name(evolution)
-            WeatherCondition.Name(weather)
-        except Exception as e:
-            return send_file(Path(args.root_path) / 'static/images/dummy_pokemon.png', mimetype='image/png')
-            abort(400)
+        raw = 'raw' in request.args
+        pkm = int(request.args.get('pkm'))
+        gender = int(request.args.get('gender', '0'))
+        form = int(request.args.get('form', '0'))
+        costume = int(request.args.get('costume', '0'))
+        evolution = int(request.args.get('evolution', '0'))
+        shiny = 'shiny' in request.args
+        weather = int(request.args.get('weather', '0'))
 
         if raw:
             filename = image_generator.get_pokemon_raw_icon(
@@ -1052,26 +1031,17 @@ def create_app():
 
     @app.route('/gym_img')
     def gym_img():
-        try:
-            team = request.args.get('team')
-            level = int(request.args.get('level'))
-            raid_level = int(request.args.get('raid-level', '0'))
-            pkm = int(request.args.get('pkm', '0'))
-            form = int(request.args.get('form', '0'))
-            costume = int(request.args.get('costume', '0'))
-            evolution = int(request.args.get('evolution', '0'))
-            in_battle = 'in-battle' in request.args
-            ex_raid_eligible = 'ex-raid-eligible' in request.args
+        team = request.args.get('team')
+        level = int(request.args.get('level'))
+        raid_level = int(request.args.get('raid-level', '0'))
+        pkm = int(request.args.get('pkm', '0'))
+        form = int(request.args.get('form', '0'))
+        costume = int(request.args.get('costume', '0'))
+        evolution = int(request.args.get('evolution', '0'))
+        in_battle = 'in-battle' in request.args
+        ex_raid_eligible = 'ex-raid-eligible' in request.args
 
-            # An exception is thrown when values are invalid.
-            RaidLevel.Name(raid_level)
-            PokemonId.Name(pkm)
-            Form.Name(form)
-            Costume.Name(costume)
-            PokemonEvolution.Name(evolution)
-            if level < 0 or level > 6 or (pkm > 0 and raid_level == 0):
-                raise ValueError()
-        except Exception:
+        if level < 0 or level > 6 or (pkm > 0 and raid_level == 0):
             abort(400)
 
         return send_file(
